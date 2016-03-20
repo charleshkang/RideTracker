@@ -16,7 +16,7 @@ LabelDelegate
 >
 
 @property (nonatomic) NSInteger rideCount;
-@property (nonatomic) float currentBalance;
+@property (nonatomic) NSInteger currentBalance;
 @property (nonatomic) float standardFare;
 
 @property (weak, nonatomic) IBOutlet UILabel *currentBalanceLabel;
@@ -36,7 +36,7 @@ LabelDelegate
 {
     [super viewDidLoad];
     // well the currentBalance value will always be 27.75 since we straight up declare it in viewDidLoad, need to find a way to update the value whenever a user enters in the textfield
-    self.currentBalance = 27.75;
+//    self.currentBalance = 27.75;
     self.standardFare = 2.75;
     
     self.currentBalanceLabel.text = [NSString stringWithFormat:@"%.2f", self.currentBalance];
@@ -91,7 +91,9 @@ LabelDelegate
 - (IBAction)saveButtonTapped:(id)sender
 {
     [[NSUserDefaults standardUserDefaults] setInteger:self.rideCount forKey:@"rideCounter"];
-    [[NSUserDefaults standardUserDefaults] setFloat:self.currentBalance forKey:@"currentBalance"];
+    [[NSUserDefaults standardUserDefaults] setInteger:self.currentBalance forKey:@"currentBalance"];
+
+//    [[NSUserDefaults standardUserDefaults] setFloat:self.currentBalance forKey:@"currentBalance"];
     
     int rideCounter = [[self.ridesTakenLabel text] integerValue];
     float currentBalance = [[self.currentBalanceLabel text] integerValue];
@@ -135,8 +137,11 @@ LabelDelegate
     
     [self didSetLabel:textField.text];
     self.currentBalanceLabel.text = textField.text;
+    
+    
     //    NSString *userEnteredBalance = [NSString stringWithFormat:@"%.2f", self.currentBalance];
     //    self.currentBalanceLabel.text = userEnteredBalance;
+    self.currentBalance = self.currentBalanceLabel.text;
     
     
     //    NSString *str = [NSString stringWithFormat:@"%f", myFloat];

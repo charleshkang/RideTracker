@@ -1,16 +1,18 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1A05AC0759FC290F56862DE02CD56389F41CC7CE",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E8B6C5A38D320C54E1EC4BF661D1EB5149B747FB",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "023C046D7BC226924BBAD83456E847BF59264631" : 0,
-    "1A05AC0759FC290F56862DE02CD56389F41CC7CE" : 0
+    "1A05AC0759FC290F56862DE02CD56389F41CC7CE" : 0,
+    "E8B6C5A38D320C54E1EC4BF661D1EB5149B747FB" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B78F545D-3E22-445C-8F84-DB5AD18CDF36",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "023C046D7BC226924BBAD83456E847BF59264631" : "",
-    "1A05AC0759FC290F56862DE02CD56389F41CC7CE" : "personal-projects\/"
+    "1A05AC0759FC290F56862DE02CD56389F41CC7CE" : "personal-projects\/",
+    "E8B6C5A38D320C54E1EC4BF661D1EB5149B747FB" : "RideTracker\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "RideTracker",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -25,6 +27,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/charleshkang\/Alarmify-iOS.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1A05AC0759FC290F56862DE02CD56389F41CC7CE"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/charleshkang\/RideTracker.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E8B6C5A38D320C54E1EC4BF661D1EB5149B747FB"
     }
   ]
 }
