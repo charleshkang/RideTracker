@@ -205,7 +205,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Ride Tracker" id="M4w-LW-NHe"/>
                     <connections>
-                        <outlet property="currentBalanceLabel" destination="iVt-tk-hUD" id="Eob-WM-XQS"/>
                         <outlet property="fareTextField" destination="NiG-W1-V37" id="Fr3-IT-jOs"/>
                         <outlet property="ridesTakenLabel" destination="UgZ-gK-xYp" id="07T-ZL-Lyy"/>
                         <outlet property="swipedCardButton" destination="CK0-3M-oYe" id="vvp-pf-7we"/>
