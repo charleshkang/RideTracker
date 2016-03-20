@@ -46,22 +46,24 @@ LabelDelegate
 }
 
 - (IBAction)swipedCardButtonTapped:(id)sender
-
-// current bugs: rides taken label should not update after balance hits 0 or below...
-// number doesn't count down properly after textfield dismiss
-
 {
     [[NSUserDefaults standardUserDefaults] synchronize];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    int rideCounter = [defaults integerForKey:@"rideCounter"];
+    self.rideCounterString = [NSString stringWithFormat:@"%i", rideCounter];
+    self.ridesTakenLabel.text = self.rideCounterString;
+    
     int rideCount = [[self.ridesTakenLabel text] integerValue];
     self.rideCount += 1;
+//    self.rideCount = rideCounter + 1;
     [self updateRideLabel];
 }
 
 - (IBAction)saveButtonTapped:(id)sender
 {
     [[NSUserDefaults standardUserDefaults] setInteger:self.rideCount forKey:@"rideCounter"];
-
+    
     int rideCounter = [[self.ridesTakenLabel text] integerValue];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -99,7 +101,7 @@ LabelDelegate
     // i know i have to set the float count to the submitted value, but not sure how to do that
     
     [self didSetLabel:textField.text];
-
+    
     [self textFieldDidEndEditing:textField];
     [self.fareTextField resignFirstResponder];
     
