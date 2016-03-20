@@ -10,10 +10,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface RTMainViewController ()
-<
-UITextFieldDelegate,
-LabelDelegate
->
 
 @property (nonatomic) NSInteger rideCount;
 
@@ -28,47 +24,38 @@ LabelDelegate
 
 @end
 
+// only thing to fix is the counter should get the count from user defaults and start adding up from there instead of starting at 1
+
 @implementation RTMainViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // well the currentBalance value will always be 27.75 since we straight up declare it in viewDidLoad, need to find a way to update the value whenever a user enters in the textfield
-    self.standardFare = 2.75;
     
+    self.standardFare = 2.75;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     int rideCounter = [defaults integerForKey:@"rideCounter"];
     self.rideCounterString = [NSString stringWithFormat:@"%i", rideCounter];
     self.ridesTakenLabel.text = self.rideCounterString;
-    
-    self.fareTextField.delegate = self;
 }
 
 - (IBAction)swipedCardButtonTapped:(id)sender
 {
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    int rideCounter = [defaults integerForKey:@"rideCounter"];
-    self.rideCounterString = [NSString stringWithFormat:@"%i", rideCounter];
-    self.ridesTakenLabel.text = self.rideCounterString;
-    
-    int rideCount = [[self.ridesTakenLabel text] integerValue];
+    NSInteger savedRideCount = [defaults integerForKey:@"rideCounter"];
+
+    self.rideCount = savedRideCount;
     self.rideCount += 1;
-//    self.rideCount = rideCounter + 1;
+    
     [self updateRideLabel];
 }
 
 - (IBAction)saveButtonTapped:(id)sender
 {
-    [[NSUserDefaults standardUserDefaults] setInteger:self.rideCount forKey:@"rideCounter"];
-    
     int rideCounter = [[self.ridesTakenLabel text] integerValue];
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setInteger:rideCounter forKey:@"rideCounter"];
-    
     [defaults synchronize];
 }
 
@@ -81,31 +68,6 @@ LabelDelegate
 - (void)updateRideLabel
 {
     self.ridesTakenLabel.text = [NSString stringWithFormat:@"%ld",self.rideCount];
-}
-
-#pragma mark - Text field delegate
-
-- (void)didSetLabel:(NSString *)label
-{
-    [self.delegate didSetLabel:label];
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-    // need to set the currentBalance to whatever the user submits
-    // i know i have to set the float count to the submitted value, but not sure how to do that
-    
-    [self didSetLabel:textField.text];
-    
-    [self textFieldDidEndEditing:textField];
-    [self.fareTextField resignFirstResponder];
-    
-    return YES;
 }
 
 @end
