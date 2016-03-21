@@ -38,17 +38,14 @@
     int rideCounter = [defaults integerForKey:@"rideCounter"];
     self.rideCounterString = [NSString stringWithFormat:@"%i", rideCounter];
     self.ridesTakenLabel.text = self.rideCounterString;
+    self.rideCount = rideCounter;
 }
 
 - (IBAction)swipedCardButtonTapped:(id)sender
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSInteger savedRideCount = [defaults integerForKey:@"rideCounter"];
-
-    self.rideCount = savedRideCount;
+    NSLog(@"look: %lu", (long)_rideCount);
     self.rideCount += 1;
-    
-    [self updateRideLabel];
+    self.ridesTakenLabel.text = [NSString stringWithFormat:@"%ld",self.rideCount];
 }
 
 - (IBAction)saveButtonTapped:(id)sender
@@ -57,17 +54,13 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setInteger:rideCounter forKey:@"rideCounter"];
     [defaults synchronize];
+    NSLog(@"saved ride count: %i", rideCounter);
 }
 
 - (IBAction)resetButtonTapped:(id)sender
 {
     self.ridesTakenLabel.text = @"0";
     self.rideCount = 0;
-}
-
-- (void)updateRideLabel
-{
-    self.ridesTakenLabel.text = [NSString stringWithFormat:@"%ld",self.rideCount];
 }
 
 @end
