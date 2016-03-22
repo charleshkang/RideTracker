@@ -44,6 +44,13 @@ LabelDelegate
     self.ridesTakenLabel.text = self.rideCounterString;
     self.rideCount = rideCounter;
     
+    float currentBalance = [defaults floatForKey:@"currentBalance"];
+    self.currentBalanceString = [NSString stringWithFormat:@"%.02f", currentBalance];
+    //    NSString* formattedNumber = [NSString stringWithFormat:@"%.02f", myFloat];
+    
+    self.currentBalanceLabel.text = self.currentBalanceString;
+    self.currentBalance = currentBalance;
+    
     self.fareTextField.delegate = self;
 }
 
@@ -60,6 +67,10 @@ LabelDelegate
     [defaults setInteger:rideCounter forKey:@"rideCounter"];
     [defaults synchronize];
     NSLog(@"saved ride count: %i", rideCounter);
+    
+    float currentBalance = [[self.currentBalanceLabel text] floatValue];
+    [defaults setFloat:currentBalance forKey:@"currentBalance"];
+    NSLog(@"saved balance : %.02f", currentBalance);
 }
 
 - (IBAction)resetButtonTapped:(id)sender
@@ -87,6 +98,7 @@ LabelDelegate
     [self didSetLabel:textField.text];
     
     self.currentBalanceLabel.text = textField.text;
+    NSLog(@"%@", self.currentBalanceLabel.text);
     
     [self textFieldDidEndEditing:textField];
     [self.fareTextField resignFirstResponder];
