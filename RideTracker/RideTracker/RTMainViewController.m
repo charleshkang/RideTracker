@@ -10,21 +10,25 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface RTMainViewController ()
+<
+UITextFieldDelegate,
+LabelDelegate
+>
 
 @property (nonatomic) NSInteger rideCount;
-
+@property (nonatomic) float currentBalance;
 @property (nonatomic) float standardFare;
 
 @property (weak, nonatomic) IBOutlet UILabel *ridesTakenLabel;
+@property (weak, nonatomic) IBOutlet UILabel *currentBalanceLabel;
 
 @property (nonatomic) NSString *rideCounterString;
+@property (nonatomic) NSString *currentBalanceString;
 
 @property (weak, nonatomic) IBOutlet UIButton *swipedCardButton;
 @property (weak, nonatomic) IBOutlet UITextField *fareTextField;
 
 @end
-
-// only thing to fix is the counter should get the count from user defaults and start adding up from there instead of starting at 1
 
 @implementation RTMainViewController
 
@@ -39,11 +43,12 @@
     self.rideCounterString = [NSString stringWithFormat:@"%i", rideCounter];
     self.ridesTakenLabel.text = self.rideCounterString;
     self.rideCount = rideCounter;
+    
+    self.fareTextField.delegate = self;
 }
 
 - (IBAction)swipedCardButtonTapped:(id)sender
 {
-    NSLog(@"look: %lu", (long)_rideCount);
     self.rideCount += 1;
     self.ridesTakenLabel.text = [NSString stringWithFormat:@"%ld",self.rideCount];
 }
@@ -61,6 +66,32 @@
 {
     self.ridesTakenLabel.text = @"0";
     self.rideCount = 0;
+    self.currentBalanceLabel.text = @"0.00";
+    self.currentBalance = 0;
+}
+
+#pragma mark - Text field delegate
+
+- (void)didSetLabel:(NSString *)label
+{
+    [self.delegate didSetLabel:label];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self didSetLabel:textField.text];
+    
+    self.currentBalanceLabel.text = textField.text;
+    
+    [self textFieldDidEndEditing:textField];
+    [self.fareTextField resignFirstResponder];
+    
+    return YES;
 }
 
 @end
