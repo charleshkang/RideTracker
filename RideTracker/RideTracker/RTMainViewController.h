@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LabelDelegate <NSObject>
+
+- (void) didSetLabel:(NSString *)label;
+
+@end
+
 @interface RTMainViewController : UIViewController
+
+@property (weak, nonatomic) id<LabelDelegate>delegate;
 
 @end

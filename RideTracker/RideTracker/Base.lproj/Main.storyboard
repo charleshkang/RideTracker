@@ -35,8 +35,28 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fvY-RX-u87" userLabel="Current Balance View">
                                 <rect key="frame" x="0.0" y="86" width="600" height="146"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zms-6L-gW2">
+                                        <rect key="frame" x="20" y="24" width="560" height="47"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVt-tk-hUD">
+                                        <rect key="frame" x="20" y="71" width="560" height="47"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <constraints>
+                                    <constraint firstItem="iVt-tk-hUD" firstAttribute="leading" secondItem="fvY-RX-u87" secondAttribute="leading" constant="20" id="LWe-xB-7AI"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zms-6L-gW2" secondAttribute="trailing" constant="20" id="NgT-aK-C1I"/>
+                                    <constraint firstAttribute="bottom" secondItem="iVt-tk-hUD" secondAttribute="bottom" constant="28" id="OaW-5d-SYv"/>
+                                    <constraint firstItem="Zms-6L-gW2" firstAttribute="leading" secondItem="fvY-RX-u87" secondAttribute="leading" constant="20" id="UIt-Zj-V08"/>
                                     <constraint firstAttribute="height" constant="146" id="bNs-we-ivt"/>
+                                    <constraint firstItem="Zms-6L-gW2" firstAttribute="top" secondItem="fvY-RX-u87" secondAttribute="top" constant="24" id="qJm-BE-Ocn"/>
+                                    <constraint firstAttribute="trailing" secondItem="iVt-tk-hUD" secondAttribute="trailing" constant="20" id="w3f-gt-P9q"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBr-Sn-Emj" userLabel="Rides Taken View">
@@ -128,18 +148,29 @@
                                             <action selector="saveButtonTapped:" destination="bTi-FN-XOI" eventType="touchUpInside" id="QOi-Rh-pTM"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How much is on your card?" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="NiG-W1-V37">
+                                        <rect key="frame" x="146" y="21" width="307" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="307" id="tbR-Ei-3kr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="L14-ui-63R" firstAttribute="top" secondItem="CK0-3M-oYe" secondAttribute="bottom" constant="8" id="29m-3U-pkP"/>
                                     <constraint firstItem="CK0-3M-oYe" firstAttribute="centerX" secondItem="E7v-tU-FcA" secondAttribute="centerX" id="61M-78-KyC"/>
                                     <constraint firstItem="CK0-3M-oYe" firstAttribute="top" secondItem="E7v-tU-FcA" secondAttribute="top" constant="58" id="6x5-dY-Nps"/>
+                                    <constraint firstItem="NiG-W1-V37" firstAttribute="centerX" secondItem="E7v-tU-FcA" secondAttribute="centerX" id="95L-2X-zjV"/>
                                     <constraint firstItem="L14-ui-63R" firstAttribute="top" secondItem="fo5-Ub-I30" secondAttribute="bottom" constant="5" id="9FT-AE-IDJ"/>
+                                    <constraint firstItem="CK0-3M-oYe" firstAttribute="top" secondItem="NiG-W1-V37" secondAttribute="bottom" constant="7" id="MVr-WV-zam"/>
                                     <constraint firstItem="fo5-Ub-I30" firstAttribute="top" secondItem="CK0-3M-oYe" secondAttribute="bottom" constant="5" id="NyS-JU-bb0"/>
                                     <constraint firstItem="fo5-Ub-I30" firstAttribute="top" secondItem="CK0-3M-oYe" secondAttribute="bottom" constant="5" id="Ti9-9S-Xaa"/>
                                     <constraint firstItem="CK0-3M-oYe" firstAttribute="top" secondItem="E7v-tU-FcA" secondAttribute="top" constant="58" id="Zvt-y3-3Wd"/>
                                     <constraint firstItem="L14-ui-63R" firstAttribute="top" secondItem="fo5-Ub-I30" secondAttribute="bottom" constant="5" id="h1S-3f-Rju"/>
                                     <constraint firstItem="fo5-Ub-I30" firstAttribute="centerX" secondItem="E7v-tU-FcA" secondAttribute="centerX" id="iZw-4O-ZRa"/>
                                     <constraint firstItem="L14-ui-63R" firstAttribute="top" secondItem="CK0-3M-oYe" secondAttribute="bottom" constant="8" id="jNR-zL-MdH"/>
+                                    <constraint firstItem="NiG-W1-V37" firstAttribute="top" secondItem="E7v-tU-FcA" secondAttribute="top" constant="21" id="wR3-Rv-oi3"/>
                                     <constraint firstItem="L14-ui-63R" firstAttribute="centerX" secondItem="E7v-tU-FcA" secondAttribute="centerX" id="wUg-OO-9bc"/>
                                 </constraints>
                                 <variation key="default">
@@ -174,13 +205,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Ride Tracker" id="M4w-LW-NHe"/>
                     <connections>
+                        <outlet property="currentBalanceLabel" destination="iVt-tk-hUD" id="bQv-bl-icB"/>
+                        <outlet property="fareTextField" destination="NiG-W1-V37" id="Fr3-IT-jOs"/>
                         <outlet property="ridesTakenLabel" destination="UgZ-gK-xYp" id="07T-ZL-Lyy"/>
                         <outlet property="swipedCardButton" destination="CK0-3M-oYe" id="vvp-pf-7we"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRX-15-GcW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="240" y="292"/>
+            <point key="canvasLocation" x="286" y="283"/>
         </scene>
     </scenes>
 </document>
